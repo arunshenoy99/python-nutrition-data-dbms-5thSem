@@ -1,0 +1,108 @@
+html{
+  scroll-behavior: smooth;
+}
+body{
+    margin: 0px;
+    background-color:grey;
+}
+#navbar{
+  position: sticky;
+  top: 0px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 1s background-color;
+  }
+  li a:hover{
+    background-color: green;
+  }
+table,tr,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: grey;
+    color:#FFDD33;
+    font-family: cursive;
+    font-size: medium;
+}
+th,td{
+    padding: 15px;
+    text-align: center;
+}
+table{
+    visibility: hidden;
+    width: 100%;
+    margin: 0px;
+}
+
+#input-div{
+  margin-bottom: 20px;
+  width: 100%;
+  background-image: url('../img/aa.jpeg');
+  height: 100%;
+  text-align: center;
+}
+#name-input,#calo-input{
+  padding: 2px;
+  width: 50%;
+  height: 50px;
+  position: relative;
+  margin-top: 300px;
+  border: none;
+  margin-bottom: 50px;
+  transition: 1s width ease-in-out;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: large;
+}
+#name-input:focus,#calo-input:focus{
+  width: 75%;
+}
+
+#name-button,#calo-button{
+  width: 200px;
+  height: 45px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: grey;
+  color: white;
+  border: 2px solid black;
+}
+h1{
+  font-family: cursive;
+}
+#home{
+  height: 100%;
+  width:100%;
+}
+#container{
+  background-color: grey;
+  color:#FFDD33;
+  width: 100%;
+}
+#about,#creator{
+  background-color: grey;
+  width: 50%;
+  float: left;
+  color:#FFDD33;
+  text-align: center;
+}
+#info{
+  color:#FFDD33;
+}
+#def{
+  color:#FFDD33;
+}
