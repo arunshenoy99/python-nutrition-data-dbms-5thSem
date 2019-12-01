@@ -56,23 +56,39 @@ def get_food_fat():
     val_dict = [{"name":va[2],"total_fat":va[0],"saturated_fat":va[1]} for va in val]
     return jsonify(val_dict),200
 
-#GET THE MINERAL DATA OF A GIVEN FOOD
-@app.route('/mineral',methods=["GET"])
-def get_minerals():
-    data = request.get_json()
-    val = mineral.get_minerals(data)
-    val_list = list(val[0])
-    val_dict = {k:v for (k,v) in zip(data["fields"],val_list)}
-    return jsonify(val_dict),200
-
 #GET THE VITAMIN DATA OF A GIVEN FOOD
 @app.route('/vitamin',methods=["GET"])
 def get_vitamins():
-    data = request.get_json()
-    val = vitamin.get_vitamins(data)
-    val_list = list(val[0])
-    val_dict = {k:v for (k,v) in zip(data["fields"],val_list)}
-    return jsonify(val_dict),200
+    data_fields_gen = request.args.items(multi=False)
+    data_fields_req = list(data_fields_gen)
+    if(data_fields_req[1][0]=="all"):
+        data_fields = {"name":data_fields_req[0][1],"fields":"all"}
+        val = vitamin.get_vitamins(data_fields)
+        val_usable = {"name":[va[0] for va in val],"fields":[list(va[1:]) for va in val]}
+        return jsonify(val_usable),200
+    name = data_fields_req[0][1]
+    vit_fields = [dat[0] for dat in data_fields_req[1:]]
+    data_fields = {"name":name,"fields":vit_fields}
+    val = vitamin.get_vitamins(data_fields)
+    val_usable = {"name":[va[0] for va in val],"fields":[list(va[1:]) for va in val]}
+    return jsonify(val_usable),200
+
+#GET THE MINERAL DATA OF A GIVEN FOOD
+@app.route('/mineral',methods=["GET"])
+def get_minerals():
+    data_fields_gen = request.args.items(multi=False)
+    data_fields_req = list(data_fields_gen)
+    if(data_fields_req[1][0]=="all"):
+        data_fields = {"name":data_fields_req[0][1],"fields":"all"}
+        val = mineral.get_minerals(data_fields)
+        val_usable = {"name":[va[0] for va in val],"fields":[list(va[1:]) for va in val]}
+        return jsonify(val_usable),200
+    name = data_fields_req[0][1]
+    min_fields = [dat[0] for dat in data_fields_req[1:]]
+    data_fields = {"name":name,"fields":min_fields}
+    val = mineral.get_minerals(data_fields)
+    val_usable = {"name":[va[0] for va in val],"fields":[list(va[1:]) for va in val]}
+    return jsonify(val_usable),200
 
 #TELLS IF A PARTICULAR FOOD IS HEALTHY OR NOT BASED ON THE AMOUNT OF FAT AND CALORIES
 @app.route('/healthy',methods=["GET"])

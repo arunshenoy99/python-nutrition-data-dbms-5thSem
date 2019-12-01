@@ -12,24 +12,24 @@
                 <li><a href="/static/fat-low.html">Low Fat Foods</a></li>
                 <li><a href="/static/fat-food.html">Fat Data</a></li>
                 <li><a href="/static/mineral-food.html">Mineral Data</a></li>
-                <li><a href="/static/vitamin-food.html">Vitamin Data</a></li>
+                <li><a href="/static/vitamin-food.html" class="active">Vitamin Data</a></li>
                 <li><a href="/static/food-healthy.html">Healthy</a></li>
                 <li><a href="/static/water-rich.html">Water Rich</a></li>
-                <li><a class="active" href="/static/deficiency.html">Deficiency Curer</a></li>
+                <li><a href="/static/deficiency.html">Deficiency Curer</a></li>
             </ul>
         </div>
         <div id="info">
-            <h1>How it works?</h1>
-            <h3>Enter the deficiency you have and we will suggest the food items that will help cure your deficiency</h3>
-        </div>
+                <h1>How it works?</h1>
+                <h3>Enter the food name to get its vitamin data</h3>
+                <h3>The vitamins can be A,A_RAE,B12,B6,C,D,E,K OR enter all to get all the vitamin data of the food</h3>
+            </div>
         <div id="input-div">
-            <input type="text" id="name-input" placeholder="Deficiency name"><br>
+            <input type="text" id="name-input" placeholder="Food Name"><br>
+            <input type="text" placeholder="A,A_RAE,B12,B6,C,D,E,K OR all" id="vit-input">
             <button id="name-button">SUBMIT</button><br>
         </div>
-        <h2 id="def"></h1>
         <div id="result-div">
-            <table id="nutrition-table"><tr><th>FID</th><th>NAME</th><th>SERVING SIZE(g)</th><th>CALORIES(kcal)</th></tr></table>
         </div>
-        <script src="/static/js/deficiency.js"></script>
+        <script src="/static/js/vitamin-food.js"></script>
     </body>
 </html>

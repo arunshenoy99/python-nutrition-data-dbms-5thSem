@@ -2,12 +2,16 @@ from utils import connector
 def get_minerals(data):
     mydb = connector.connect()
     mycursor = mydb.cursor()
-    part_sql = ("{},"*len(data["fields"])).format(*data["fields"])
-    sql = "SELECT "+ part_sql[:-1]+ " FROM NUTRITION N,MINERAL M WHERE N.FID=M.FID AND N.NAME=%s"
-    val = (data["name"],)
-    mycursor.execute(sql,val)
-    new_data = mycursor.fetchall()
-    return new_data
+    if(data["fields"]=="all"):
+        sql = "SELECT N.NAME,M.SODIUM,M.CALCIUM,M.IRON,M.POTASSIUM,M.CARB,M.WATER FROM NUTRITION N,MINERAL M WHERE N.FID=M.FID AND N.NAME LIKE '%{}%'".format(data["name"])
+        mycursor.execute(sql)
+        data_new = mycursor.fetchall()
+        return data_new
+    sql_part = ("{},"*len(data["fields"])).format(*data["fields"])
+    sql = "SELECT NAME,"+sql_part[:-1]+" FROM NUTRITION N,MINERAL M WHERE N.FID=M.FID AND N.NAME LIKE '%{}%'".format(data["name"])
+    mycursor.execute(sql)
+    data_new = mycursor.fetchall()
+    return data_new
 
 def get_water():
     mydb = connector.connect()

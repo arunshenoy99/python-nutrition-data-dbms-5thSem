@@ -29,7 +29,11 @@ ul {
     text-decoration: none;
     transition: 1s background-color;
   }
-  li a:hover{
+  li a.active {
+    background-color:green;
+    color: white;
+  }
+  li a:hover:not(.active){
     background-color: green;
   }
 table,tr,th,td{
@@ -105,4 +109,19 @@ h1{
 }
 #def{
   color:#FFDD33;
+}
+#result-div{
+  background-color: grey;
+  color:#FFDD33;
+  font-size: medium;
+}
+#result-content{
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color: grey;
+}
+#result-content p{
+  color:#FFDD33;
+  font-family: cursive;
+  font-size: medium;
 }

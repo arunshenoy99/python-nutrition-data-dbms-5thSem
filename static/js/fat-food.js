@@ -11,6 +11,7 @@ nameButton.addEventListener('click',function(){
     }
     const url = "http://localhost:3000/food-fat?name="+name
     nutritionTable.innerHTML = "LOADING....."
+    window.scrollBy(0,300);
     fetch(url)
     .then(data=>{nutritionTable.innerHTML = "<tr><th>NAME</th><th>TOTAL FAT(g)</th><th>SATURATED FAT</th></tr>"
     return data.json()})

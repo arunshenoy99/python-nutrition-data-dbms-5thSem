@@ -11,6 +11,7 @@ nameButton.addEventListener('click',function(){
     }
     const url = "http://localhost:3000/food?name="+name
     nutritionTable.innerHTML = "LOADING....."
+    window.scrollBy(0,300);
     fetch(url)
     .then(data=>{nutritionTable.innerHTML = "<tr><th>FID</th><th>NAME</th><th>SERVING SIZE(g)</th><th>CALORIES(kcal)</th></tr>"
     return data.json()})

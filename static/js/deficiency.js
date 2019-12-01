@@ -12,6 +12,7 @@ nameButton.addEventListener('click',function(){
     }
     const url = "http://localhost:3000/deficiency?name="+name
     nutritionTable.innerHTML = "LOADING....."
+    window.scrollBy(0,300);
     fetch(url)
     .then(data=>{
     return data.json()})

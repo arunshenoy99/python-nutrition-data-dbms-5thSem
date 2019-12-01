@@ -1,7 +1,7 @@
 var nutritionTable = document.querySelector("#result-div")
 const nameInput = document.querySelector('#name-input')
 const nameButton = document.querySelector("#name-button")
-const minInput = document.querySelector('#vit-input')
+const vitInput = document.querySelector('#vit-input')
 nameButton.addEventListener('click',function(){
     var url
     nameInput.style.backgroundColor="white";
@@ -10,18 +10,15 @@ nameButton.addEventListener('click',function(){
         nameInput.style.backgroundColor = "#F87B61";
         return;
     }
-    var requiredMin = minInput.value;
-    if(requiredMin == ""){
-        var requiredMinA = ['all']
-    }
-    var requiredMinA = requiredMin.split(',')
-    url="http://localhost:3000/mineral?name="+name
-    if(requiredMinA[0].toLowerCase()=="all"){
+    var requiredVit = vitInput.value;
+    var requiredVitA = requiredVit.split(',')
+    url="http://localhost:3000/vitamin?name="+name
+    if(requiredVitA[0].toLowerCase()=="all"){
         url = url+"&all=1";
-        requiredMinA = ['SODIUM','CALCIUM','IRON','POTASSIUM','CARB','WATER'];
+        requiredVitA = ['A','A_RAE','B12','B6','C','D','E','K'];
     }
     else{
-        requiredMinA.forEach((e)=>{
+        requiredVitA.forEach((e)=>{
             url=url+"&"+e.toUpperCase()+"=1";
         })
     }
@@ -39,7 +36,7 @@ nameButton.addEventListener('click',function(){
             nutritionTable.innerHTML = nutritionTable.innerHTML+"<div id='result-content'>"
             nutritionTable.innerHTML = nutritionTable.innerHTML+"<p>Name:"+names[i]+"</p>";
             for(var j=0;j<field[i].length;j++){
-                nutritionTable.innerHTML = nutritionTable.innerHTML+"<p>"+requiredMinA[j]+":"+field[i][j]+"</p>";
+                nutritionTable.innerHTML = nutritionTable.innerHTML+"<p>"+requiredVitA[j]+":"+field[i][j]+"</p>";
             }
             nutritionTable.innerHTML = nutritionTable.innerHTML+"</div>"
         }
